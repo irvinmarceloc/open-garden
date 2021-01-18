@@ -9,6 +9,6 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   saveData(routine: Routine){
-    return this.httpClient.post(this.API_URI+'/games/',routine);
+    return this.httpClient.post(this.API_URI,routine);
   }
 }

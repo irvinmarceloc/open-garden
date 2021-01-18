@@ -1,6 +1,7 @@
 export interface Routine{
-    from : string;
-    to: string;
-    repeat: string;
-    zone: Date
+    "id"?: number;
+    "from" : string;
+    "to": string;
+    "repeat": string;
+    "zone": string
 }
