@@ -7,14 +7,56 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <ion-item>
-    <ion-label>Desde</ion-label> <ion-datetime Display-Format	= "D/M/YY  H:mm"	></ion-datetime>  
-  </ion-item>
+  <form 
+  [formGroup]="routineForm" 
+  (ngSubmit)="Send(routineForm.value)"> 
 
-  <ion-item>
-    <ion-label>Hasta</ion-label> <ion-datetime Display-Format	= "D/M/YY  H:mm"	></ion-datetime>
-  </ion-item>
-    
+      <ion-item>
+        <ion-label>Desde</ion-label>
+        
+          <ion-datetime  formControlName="from" placeholder="d/m/a h:m" display-format	= "D/M/YY  H:mm"	></ion-datetime>  
+        
+      </ion-item>
 
+      <ion-item>
+        <ion-label>Hasta</ion-label>     
+        
+          <ion-datetime  formControlName="to" placeholder="d/m/a h:m" display-format	= "D/M/YY  H:mm"	></ion-datetime>  
+        
+      </ion-item>
+        
+      <ion-item>
+        <ion-label>Repetir</ion-label>
+        
+          <ion-select formControlName="repeat" placeholder="Seleccionar">
+            <ion-select-option value="cd">Cada dia</ion-select-option>
+            <ion-select-option value="sh">Solo hoy</ion-select-option>
+          </ion-select>
+        
+      </ion-item>
+
+      <ion-item>
+        
+          <ion-label>Zona</ion-label>
+          <ion-select formControlName="zone" placeholder="Seleccionar">
+            <ion-select-option value="z1">Zona 1</ion-select-option>
+            <ion-select-option value="z2">Zona 2</ion-select-option>
+            <ion-select-option value="z3">Zona 3</ion-select-option>
+            <ion-select-option value="z4">Zona 4</ion-select-option>
+            <ion-select-option value="z4">Todas</ion-select-option>
+          </ion-select>
+        
+      </ion-item>
+      
+  </form>
 </ion-content>
+<ion-footer>
+  <ion-button 
+  expand="full" 
+  shape="round" 
+  color="success"
+  type = "submint"
+  (click)="Send(routineForm.value)"
+  >Guardar  
+  </ion-button> 
+</ion-footer>
