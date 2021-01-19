@@ -50,11 +50,12 @@ export class Tab2Page implements OnInit {
 
 
   Send(routineData: Routine){
+    routineData.status = 'pendiente';
     this.apiServie.saveData(routineData).toPromise().then(resp =>{
       console.log("resp", resp);
-   }).catch(error =>{
+    }).catch(error =>{
       console.log("error ", error );
-   });
+    });
    console.log(routineData);
   }
 

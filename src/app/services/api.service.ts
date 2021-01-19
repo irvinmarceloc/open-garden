@@ -11,4 +11,8 @@ export class ApiService {
   saveData(routine: Routine){
     return this.httpClient.post(this.API_URI,routine);
   }
+
+  getDataPending(){
+    return this.httpClient.get(this.API_URI);
+  }
 }

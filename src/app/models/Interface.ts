@@ -3,5 +3,6 @@ export interface Routine{
     "from" : string;
     "to": string;
     "repeat": string;
-    "zone": string
+    "zone": string;
+    "status": string
 }
