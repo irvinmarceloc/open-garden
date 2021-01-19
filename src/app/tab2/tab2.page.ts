@@ -57,6 +57,11 @@ export class Tab2Page implements OnInit {
       console.log("error ", error );
     });
    console.log(routineData);
+   this.Clear();  
+  }
+
+  Clear(){
+      this.routineForm.reset() ;
   }
 
   ngOnInit() {}
