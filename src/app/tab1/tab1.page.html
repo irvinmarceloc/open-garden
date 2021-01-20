@@ -7,9 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <br>
   <div class="grid">
     <div *ngFor="let rutina of rutinas" >
-      <ion-item>{{rutina.id+'  '}}{{rutina.from+'  '}}{{rutina.to+'  '}}{{rutina.zone+'  '}}{{rutina.repeat+'  '}}</ion-item>
+      <ion-item>
+          {{rutina.date_from}}
+          <br>  {{rutina.date_to}}
+          <br>  {{rutina.status}}
+          <br>  {{rutina.zone_id}}
+      </ion-item>
     </div> 
   </div>
 </ion-content>

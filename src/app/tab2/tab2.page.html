@@ -13,37 +13,26 @@
 
       <ion-item>
         <ion-label>Desde</ion-label>
-        
-          <ion-datetime  formControlName="from" placeholder="h:m" display-format	= "H:mm"	></ion-datetime>  
-        
+        <ion-datetime  formControlName="date_from" placeholder="DD MM , YY HH:mm" display-format	= "DD MM , YY HH:mm"	></ion-datetime>  
+    
       </ion-item>
 
       <ion-item>
         <ion-label>Hasta</ion-label>     
         
-          <ion-datetime  formControlName="to" placeholder="h:m" display-format	= "H:mm"	></ion-datetime>  
+          <ion-datetime  formControlName="date_to" placeholder="DD MM , YY HH:mm" display-format	= "DD MM , YY HH:mm"	></ion-datetime>  
         
       </ion-item>
         
-      <ion-item>
-        <ion-label>Repetir</ion-label>
-        
-          <ion-select formControlName="repeat" placeholder="Seleccionar">
-            <ion-select-option value="cd">Cada dia</ion-select-option>
-            <ion-select-option value="sh">Solo hoy</ion-select-option>
-          </ion-select>
-        
-      </ion-item>
-
       <ion-item>
         
           <ion-label>Zona</ion-label>
-          <ion-select formControlName="zone" placeholder="Seleccionar">
-            <ion-select-option value="z1">Zona 1</ion-select-option>
-            <ion-select-option value="z2">Zona 2</ion-select-option>
-            <ion-select-option value="z3">Zona 3</ion-select-option>
-            <ion-select-option value="z4">Zona 4</ion-select-option>
-            <ion-select-option value="zt">Todas</ion-select-option>
+          <ion-select formControlName="zone_id" placeholder="Seleccionar">
+            <ion-select-option value="1">Zona 1</ion-select-option>
+            <ion-select-option value="2">Zona 2</ion-select-option>
+            <ion-select-option value="3">Zona 3</ion-select-option>
+            <ion-select-option value="4">Zona 4</ion-select-option>
+            <ion-select-option value="5">Todas</ion-select-option>
           </ion-select>
         
       </ion-item>

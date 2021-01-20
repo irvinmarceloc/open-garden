@@ -15,32 +15,26 @@ import { ApiService } from '../services/api.service';
 export class Tab2Page implements OnInit {
   routineForm: FormGroup;
   validation_messages = {
-    from: [{type:"required", message:"La fecha de inicio no puede quedar vacía"}],
-    to: [{type:"required", message:"La fecha de fin no puede quedar vacía"}],
-    repeat: [{type:"required", message:"Elija ¨Solo hoy¨ o ¨Cada día¨"}],
-    zone: [{type:"required", message:"Elija una zona"}]
+    date_from: [{type:"required", message:"Hora de inicio NULL"}],
+    date_to: [{type:"required", message:"Hora de fin NULL"}],
+    zone_id: [{type:"required", message:"Elija zona"}]
   }
   constructor(
     private formBuilder: FormBuilder,
     private apiServie: ApiService
   ) {
     this.routineForm = this.formBuilder.group({
-      from: new  FormControl(        
+      date_from: new  FormControl(        
       "",
       Validators.compose([
         Validators.required,
       ])),
-      to: new  FormControl(        
+      date_to: new  FormControl(        
       "",
       Validators.compose([
         Validators.required,
       ])),
-      repeat: new  FormControl(        
-      "",
-      Validators.compose([
-        Validators.required,
-      ])),
-      zone: new  FormControl(
+      zone_id: new  FormControl(
       "",
       Validators.compose([
         Validators.required,
@@ -50,7 +44,7 @@ export class Tab2Page implements OnInit {
 
 
   Send(routineData: Routine){
-    routineData.status = 'pendiente';
+    routineData.status = 'pending';
     this.apiServie.saveData(routineData).toPromise().then(resp =>{
       console.log("resp", resp);
     }).catch(error =>{
@@ -61,7 +55,7 @@ export class Tab2Page implements OnInit {
   }
 
   Clear(){
-      this.routineForm.reset() ;
+    this.routineForm.reset() ;
   }
 
   ngOnInit() {}
