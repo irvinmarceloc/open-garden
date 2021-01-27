@@ -15,9 +15,9 @@
       <ion-item>
           {{rutina.date_from}}
           <br>  {{rutina.date_to}}
-          <br>  {{rutina.status}}
+          <br>  {{rutina.status}} 
           <br>  {{rutina.zone_id}}
-          <ion-button class="update" shape="round" slot="end"><ion-icon name="refresh-outline"></ion-icon></ion-button>
+          <ion-button class="update" shape="round" (click)='SendEditar()'  slot="end"><ion-icon name="refresh-outline"></ion-icon></ion-button>
           <ion-button class="close" shape="round" slot="end"><ion-icon name="close-outline"></ion-icon></ion-button>
       </ion-item>
     </div> 

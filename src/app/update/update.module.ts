@@ -1,28 +1,32 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
+import { IonicModule } from '@ionic/angular';
 
-import { TabsPage } from './tabs.page';
+import { UpdatePageRoutingModule } from './update-routing.module';
+
+import { UpdatePage } from './update.page';
+
 import { ComponentsModule } from '../components/components.module';
+
 import { RouterModule } from '@angular/router';
+
+
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
+    IonicModule,
+    UpdatePageRoutingModule,
     ComponentsModule,
-    TabsPageRoutingModule,   
     RouterModule.forChild([
       {
         path: '',
-        component: TabsPage
-      }
+        component: UpdatePage      
+    }
     ])
-
   ],
-  declarations: [TabsPage]
+  declarations: [UpdatePage]
 })
-export class TabsPageModule {}
+export class UpdatePageModule {}
