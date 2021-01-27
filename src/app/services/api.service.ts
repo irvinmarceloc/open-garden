@@ -1,20 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Routine, Schedule } from '../models/Interface';
+import { ScheduleSend } from '../models/Interface';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   //API_URI = 'http://localhost:3000/api';
-  API_URI = 'http://10.42.0.111:5000';
+  API_URI = 'http://localhost:5000';
+  // http://10.42.0.111:5000/schedule/listall
   
   constructor(private httpClient: HttpClient) { }
 
-  saveData(routine: Routine){
-    return this.httpClient.post('http://10.42.0.111:5000/schedule/new',routine);
+  getDataPending(){
+    return this.httpClient.get('http://localhost:5000/schedule/listPending');
   }
 
-  getDataPending(){
-    return this.httpClient.get('http://10.42.0.111:5000/schedule/listall');
+  getDataCompleted(){
+    return this.httpClient.get('http://localhost:5000/schedule/listCompleted');
   }
+
+  getData(id: string){
+    return this.httpClient.get(this.API_URI+'/schedule/listPending'+id);
+  }
+
+  saveData(routine: ScheduleSend){
+    return this.httpClient.post('http://localhost:5000/schedule/new',routine);
+  }
+
+  deleteGame(id: string){
+    return this.httpClient.delete(this.API_URI+'/schedule/delete'+id);
+  }
+  
+  updateGame(id: number, update: any){
+    return this.httpClient.put(this.API_URI+'/schedule/update'+id,update);
+  }
+  
 }

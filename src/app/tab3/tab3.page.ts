@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service'
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
-  constructor() {}
+  rutinas: any;
+  constructor(private apiService: ApiService) {
+    this.apiService.getDataCompleted().subscribe(arg => this.rutinas = arg);
+  }
 
 }

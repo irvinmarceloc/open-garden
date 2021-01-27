@@ -1,7 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header id="container" [translucent]="true">
+  <ion-toolbar class="new-background-color">
     <ion-title>
-      Nueva Rutina
+      <ion-text color="light">
+        Nueva Rutina
+      </ion-text>      
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,14 +15,15 @@
 
       <ion-item>
         <ion-label>Desde</ion-label>
-        <ion-datetime  formControlName="date_from" placeholder="DD MM , YY HH:mm" display-format	= "DD MM , YY HH:mm"	></ion-datetime>  
-    
+        <ion-datetime  formControlName="date_from" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+        <ion-datetime  formControlName="time_from" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
       </ion-item>
 
       <ion-item>
         <ion-label>Hasta</ion-label>     
         
-          <ion-datetime  formControlName="date_to" placeholder="DD MM , YY HH:mm" display-format	= "DD MM , YY HH:mm"	></ion-datetime>  
+        <ion-datetime  formControlName="date_to" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+        <ion-datetime  formControlName="time_to" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
         
       </ion-item>
         

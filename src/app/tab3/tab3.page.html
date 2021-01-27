@@ -1,17 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header id="container" [translucent]="true">
+  <ion-toolbar class="new-background-color">
     <ion-title>
-      Tab 3
+      <ion-text color="light">
+        Historico
+      </ion-text>      
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <br>
+  <div class="grid">
+    <div *ngFor="let rutina of rutinas" >
+      <ion-item>
+          {{rutina.date_from}}
+          <br>  {{rutina.date_to}}
+          <br>  {{rutina.status}}
+          <br>  {{rutina.zone_id}}
+      </ion-item>
+    </div> 
+  </div>
 </ion-content>
