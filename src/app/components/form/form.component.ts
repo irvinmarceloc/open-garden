@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ScheduleSend } from '../../models/Interface';
 
 @Component({
   selector: 'app-form',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  @Input()  schedule : ScheduleSend;
+
+  constructor() { 
+    console.log(this.schedule)
+  }
 
   ngOnInit() {}
 

@@ -1,18 +1,18 @@
-<ion-header>
+<ion-header id="container">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <ion-back-button (click)='Back()' color="danger"></ion-back-button>
-    </ion-buttons>
-    <ion-title>update</ion-title>
+    <ion-title>Actualizar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  Aca abajo
-  <div class="ion-padding">
-    <app-form></app-form>
+  <div *ngFor="let schedule of schedules" >
+    {{schedule.date_from}}
+    <br>{{schedule.date_to}}
+    <br>{{schedule.status}}
+    <br>{{schedule.watering_id}}
+    <br>{{schedule.zone_id}}
   </div>
-  Se ignora el componente
+  <ion-button (click)='Back()' >Confirmar</ion-button>
+  <ion-button (click)='Back()' color="danger">Cancelar</ion-button>
 </ion-content>

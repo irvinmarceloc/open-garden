@@ -19,8 +19,8 @@ export class ApiService {
     return this.httpClient.get('http://localhost:5000/schedule/listCompleted');
   }
 
-  getData(id: string){
-    return this.httpClient.get(this.API_URI+'/schedule/listPending'+id);
+  getData(id: number){
+    return this.httpClient.get('http://localhost:5000/schedule/getSchedule/'+ id);
   }
 
   saveData(routine: ScheduleSend){
