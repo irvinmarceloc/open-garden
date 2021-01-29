@@ -7,11 +7,36 @@
 
 <ion-content>
   <div *ngFor="let schedule of schedules" >
-    {{schedule.date_from}}
-    <br>{{schedule.date_to}}
-    <br>{{schedule.status}}
-    <br>{{schedule.watering_id}}
-    <br>{{schedule.zone_id}}
+    <form > 
+        <ion-item>
+          <ion-label>Desde</ion-label>
+          <ion-datetime  value="{{schedule.date_from}}" formControlName="date_from" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+          <ion-datetime  value="{{schedule.date_from}}" formControlName="time_from" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Hasta</ion-label>     
+          
+          <ion-datetime  value="{{schedule.date_to}}"  formControlName="date_to" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+          <ion-datetime  value="{{schedule.date_to}}" formControlName="time_from" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
+          
+        </ion-item>
+          
+        <ion-item>
+          
+            <ion-label>Zona</ion-label>
+            <ion-select value="{{schedule.zone_id}}" formControlName="zone_id" placeholder="Zona {{schedule.zone_id}}">
+              <ion-select-option value="1">Zona 1</ion-select-option>
+              <ion-select-option value="2">Zona 2</ion-select-option>
+              <ion-select-option value="3">Zona 3</ion-select-option>
+              <ion-select-option value="4">Zona 4</ion-select-option>
+              <ion-select-option value="5">Todas</ion-select-option>
+            </ion-select>
+          
+        </ion-item>
+        
+    </form>
+
   </div>
   <ion-button (click)='Back()' >Confirmar</ion-button>
   <ion-button (click)='Back()' color="danger">Cancelar</ion-button>
