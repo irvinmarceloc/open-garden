@@ -22,12 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IonicModule,
     UpdatePageRoutingModule,
     ComponentsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: UpdatePage      
-    }
-    ])
+    RouterModule
   ],
   declarations: [UpdatePage]
 })
