@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'update:id',
     component: UpdatePage,
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('../update/update.module').then(m => m.UpdatePageModule)
+  },
+  {
+    path: 'delete',
+    loadChildren: () => import('../delete/delete.module').then( m => m.DeletePageModule)
   }
 ];
 
