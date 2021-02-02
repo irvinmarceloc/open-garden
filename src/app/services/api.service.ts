@@ -31,7 +31,7 @@ export class ApiService {
     return this.httpClient.delete(this.API_URI+'/schedule/delete'+id);
   }
   
-  updateGame(id: number, update: any){
+  update(id: number, update: any){
     return this.httpClient.put(this.API_URI+'/schedule/update'+id,update);
   }
   

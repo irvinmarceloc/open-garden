@@ -7,7 +7,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Routes, RouterModule } from '@angular/router';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
-import { UpdatePageModule } from '../update/update.module'
+import { UpdatePageModule } from '../update/update.module';
+import { DeletePageModule } from '../delete/delete.module';
 import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ComponentsModule } from '../components/components.module';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
     UpdatePageModule,
+    DeletePageModule,
     ComponentsModule,
     RouterModule
   ],

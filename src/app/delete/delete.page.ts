@@ -12,4 +12,8 @@ export class DeletePage implements OnInit {
   ngOnInit() {
   }
 
+  Delete(id){
+    console.log(id);
+  }
+
 }

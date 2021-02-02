@@ -1,14 +1,15 @@
-.container{
-    --background: #7acc2d;
-    --color:  #7acc2d;
-    -ms-text-justify: auto;
-}
-.header{
-    --background: #7acc2d;
-    --color:  #7acc2d;
-    -ms-text-justify: auto;
+ion-select {
+    /* Applies to the value and placeholder color */
+    color: black;
+  
+    /* Set a different placeholder color */
+    --placeholder-color: black;
+  
+    /* Set full opacity on the placeholder */
+    --placeholder-opacity: 100;
+  }
+.boton{
+    width: 100%;
+    justify-content: center;
 }
 
-.button{
-    color: "#7acc2d";
-}

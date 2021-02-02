@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+
+import { ComponentsModule } from '../components/components.module';
 
 import { DeletePageRoutingModule } from './delete-routing.module';
 
 import { DeletePage } from './delete.page';
 
+import { RouterModule } from '@angular/router';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    DeletePageRoutingModule
+    DeletePageRoutingModule,
+    ComponentsModule,
+    RouterModule
   ],
   declarations: [DeletePage]
 })

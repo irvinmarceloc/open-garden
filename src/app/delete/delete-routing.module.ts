@@ -5,7 +5,7 @@ import { DeletePage } from './delete.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: DeletePage
   }
 ];

@@ -1,6 +1,6 @@
-import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { NavController } from '@ionic/angular';
+
 //import { ScheduleSend } from '../models/Interface';
 
 @Component({
@@ -17,20 +17,9 @@ export class Tab1Page  implements OnInit {
     
   ) {
     this.apiService.getDataPending().subscribe(arg => this.rutinas = arg);  
-    console.log(this.rutinas)
   }
   
   ngOnInit(): void{
     
   }
 }
-
-
-  //@Output() dataClicked: EventEmitter<ScheduleSend> = new EventEmitter();
-  //private navCtrl: NavController
-  /*
-  SendEditar(  schedule: ScheduleSend ): void{
-    this.navCtrl.navigateForward("/update");
-    this.dataClicked.emit(schedule);
-  }
-  */
