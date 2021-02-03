@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+ import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 
 @Injectable({
@@ -7,11 +7,11 @@ import { Storage } from "@ionic/storage";
 export class AuthenticateServiceService {
   constructor(private storage: Storage) {}
   async loginUser(credential) {
-    const user = await this.storage.get("user");
+    //const user = await this.storage.get("user");
     return new Promise((accept, reject) => {
       if (
-        user.email == credential.email &&
-        user.password == btoa(credential.password)
+        credential.email  ==  "test@test.com" &&
+         credential.password  == "12345"
       ) {
         accept("Login correcto");
       } else {

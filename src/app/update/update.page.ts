@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Rutina } from '../models/Interface';
 import { ActivatedRoute, Params} from '@angular/router';

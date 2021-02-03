@@ -4,7 +4,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule), canActivate: [LoginGuard]
   },
   {
     path: 'login',
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [LoginGuard]
   }
 ];
 @NgModule({

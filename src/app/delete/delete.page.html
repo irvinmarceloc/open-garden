@@ -1,9 +1,52 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>delete</ion-title>
+    <ion-title>Eliminar</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <div *ngFor="let rutina of rutinas" >
+  <form 
+    [formGroup]="routineForm" 
+    (ngSubmit)="Delete(rutina.watering_id)"> 
+
+      
+      <ion-item>
+        <ion-label>Desde</ion-label>
+        <ion-datetime disabled="true"  formControlName="date_from" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+        <ion-datetime disabled="true"  formControlName="time_from" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Hasta</ion-label>     
+        
+        <ion-datetime disabled="true"   formControlName="date_to" placeholder="DD MM , YY" display-format	= "DD-MM-YY "	></ion-datetime>  
+        <ion-datetime disabled="true"   formControlName="time_to" placeholder="HH:mm" display-format	= "HH:mm"	></ion-datetime>  
+        
+      </ion-item>
+        
+      <ion-item class="zona">
+        
+          <ion-label   >Zona</ion-label>
+
+          <ion-select disabled="true"  formControlName="zone_id" placeholder="Zona {{rutina.zone_id}}">
+            <ion-select-option value="1">Zona 1</ion-select-option>
+            <ion-select-option value="2">Zona 2</ion-select-option>
+            <ion-select-option value="3">Zona 3</ion-select-option>
+            <ion-select-option value="4">Zona 4</ion-select-option>
+            <ion-select-option value="5">Todas</ion-select-option>
+          </ion-select>
+        
+      </ion-item>
+
+  </form>
+  {{mensaje}}
+  <div class="boton">
+    <ion-button (click)="Delete(rutina.watering_id)"  >Eliminar</ion-button>  
+    <ion-button (click)='Back()' color="danger">Cancelar</ion-button>
+  </div>
+
+  </div>
+  
 
 </ion-content>
