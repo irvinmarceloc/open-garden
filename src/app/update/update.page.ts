@@ -3,11 +3,13 @@ import { NavController } from '@ionic/angular';
 import { Rutina } from '../models/Interface';
 import { ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { ScheduleSend } from '../models/Interface'
 import { 
   FormGroup, 
   FormBuilder, 
   FormControl
 } from '@angular/forms';
+
 
 @Component({
   selector: 'app-update',
@@ -60,12 +62,26 @@ export class UpdatePage implements OnInit {
     
   }
     
-  Update(routineData: Rutina){
+  Update(routineData: ScheduleSend){
     console.log(routineData);
-    this.apiService.update(routineData);
-    this.mensaje = "Actualizado con exito";
-    this.rutinas[0]["zone_id"] = "";
-    this.Clear();
+    
+    routineData.status = 'pending';
+    routineData.date_from = this.CortarFecha(routineData.date_from);
+    routineData.time_from = this.CortarHora(routineData.time_from);
+    routineData.date_to = this.CortarFecha(routineData.date_to);
+    routineData.time_to = this.CortarHora(routineData.time_to);
+
+    console.log(this.rutinas[0]);
+    this.apiService.update(this.rutinas[0]['watering_id'],  routineData).toPromise().then(resp =>{
+      console.log("resp", resp);
+      this.mensaje = "Actualización exitosa";
+      this.rutinas[0]["zone_id"] = "";
+      this.Clear();
+    }).catch(error =>{
+      console.log("error ", error );
+      this.mensaje = "Fallo de actualización";
+    });
+    
   }
 
   Back(): void{

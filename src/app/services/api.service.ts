@@ -6,7 +6,8 @@ import { ScheduleSend } from '../models/Interface';
 })
 export class ApiService {
   //API_URI = 'http://localhost:3000/api';
-  API_URI = 'http://10.42.0.111:5000';
+  API_URI = 'http://localhost:5000';
+  //http://10.42.0.111:5000
   // http://10.42.0.111:5000/schedule/listall
   
   constructor(private httpClient: HttpClient) { }
@@ -28,11 +29,11 @@ export class ApiService {
   }
 
   delete(id: string){
-    return this.httpClient.delete(this.API_URI+'/schedule/delete'+id);
+    return this.httpClient.delete(this.API_URI+'/schedule/delete/'+id);
   }
   
-  update(update: any){
-    return this.httpClient.put(this.API_URI+'/schedule/update',update);
+  update(id:number, update: any){
+    return this.httpClient.put(this.API_URI+'/schedule/update/'+id,update);
   }
   
 }
