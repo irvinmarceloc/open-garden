@@ -62,6 +62,7 @@ export class UpdatePage implements OnInit {
     
   Update(routineData: Rutina){
     console.log(routineData);
+    this.apiService.update(routineData);
     this.mensaje = "Actualizado con exito";
     this.rutinas[0]["zone_id"] = "";
     this.Clear();
