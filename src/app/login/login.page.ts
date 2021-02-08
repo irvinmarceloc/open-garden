@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from "@ionic/storage";
-
+import { ApiService } from '../services/api.service';
 import { 
   FormGroup, 
   FormBuilder, 
@@ -20,6 +20,10 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   validation_messages = {
+    ip:[
+      {type:"required", message:"La ip es requerido"},
+      {type: "pattern", message:"Este no es una ip valido"}
+    ],
     email:[
       {type:"required", message:"El email es requerido"},
       {type: "pattern", message:"Este no es un email valido"}
@@ -36,9 +40,17 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder, 
     private authService: AuthenticateServiceService,
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private apiService: ApiService
   ) { 
     this.loginForm = this.formBuilder.group({
+      ip : new FormControl(
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+        ])
+      ),
       email : new FormControl(
         "",
         Validators.compose([
@@ -71,6 +83,8 @@ export class LoginPage implements OnInit {
     .catch(err =>{
       this.errorMessage = err;
     });
+    localStorage.setItem("ip",'http://'+credentials.ip+':5000');
+    this.apiService.API_URI = 'http://'+credentials.ip+':5000';
   }
   goToRegister(){
     this.navCtrl.navigateForward("/register");

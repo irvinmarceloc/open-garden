@@ -16,7 +16,7 @@ export class Tab1Page  implements OnInit {
     private apiService: ApiService,
     
   ) {
-    this.apiService.getDataPending().subscribe(arg => this.rutinas = arg);  
+     this.apiService.getDataPending().subscribe(arg => this.rutinas = arg);  
   }
   
   ngOnInit(): void{

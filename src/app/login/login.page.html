@@ -2,9 +2,14 @@
   <figure text-center padding>
     <img src="../../assets/img/irrigacion2.png" />
   </figure>
+
   <form 
   [formGroup]="loginForm" 
   (ngSubmit)="loginUser(loginForm.value)">
+    <ion-item>
+      <ion-label>Dispositivo</ion-label>
+      <ion-input formControlName="ip"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
       <ion-input formControlName="email"></ion-input>
