@@ -63,9 +63,10 @@ export class DeletePage implements OnInit {
       console.log("error ", error );
       this.mensaje = "Fallo al eliminar";
     });
+    this.navCtrl.navigateForward("/tabs/tab1");
   }
 
   Back(): void{
-    this.navCtrl.navigateForward("/tabs/tab1");
+    this.navCtrl.navigateForward("/tabs/tab1/update/"+this.rutinas[0]['watering_id']);
   }
 }

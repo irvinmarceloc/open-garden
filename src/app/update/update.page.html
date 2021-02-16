@@ -1,5 +1,11 @@
 <ion-header >
   <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button text="" ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="Update(routineForm.value)" ><ion-icon name="checkmark-outline"></ion-icon></ion-button>
+    </ion-buttons>
     <ion-title >Actualizar</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -40,15 +46,13 @@
         
       </ion-item>
 
-
+      <div class="boton" text-center>
+        <ion-button [routerLink]="['../delete', rutina.watering_id ]" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </div>    
 
   </form>
 
   </div>
   {{mensaje}}
-  <div class="boton">
-    <ion-button (click)="Update(routineForm.value)"  >Confirmar</ion-button>  
-    <ion-button (click)='Back()' color="danger">Cancelar</ion-button>
-  </div>
 
 </ion-content>

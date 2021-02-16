@@ -1,7 +1,7 @@
 <ion-header id="container" [translucent]="true">
   <ion-toolbar class="new-background-color">
     <ion-title>
-      <ion-text color="light">
+      <ion-text class="titulo" >
         Programados
       </ion-text>      
     </ion-title>
@@ -12,25 +12,25 @@
 
     <ion-item>Pendientes</ion-item>
     <div *ngFor="let rutina of rutinas" >
-      <br>
-      <ion-item class="cuadro" >
-        <div class="info" >
-          <p class="id">ID:  </p>{{rutina.watering_id}}<br>
-          <p class="titulo">Zona: </p> {{rutina.zone_id}} <br>
-          <p class="titulo">Inicio: </p><br>{{rutina.date_from}}<br>
-          <p class="titulo">Fin:    </p><br>{{rutina.date_to}}<br>
-        </div>  
+      <ionic-card class="card">
+        <ion-card-content target>
+          <ion-card-subtitle>ID:  {{rutina.watering_id}}</ion-card-subtitle>
+          <ion-card-subtitle>Zona:  {{rutina.zone_id}}</ion-card-subtitle>      
+          <p class="titulo">Inicio: </p><br><h3>{{rutina.date_from}}</h3>
+          <p class="titulo">Fin:    </p><br><h3>{{rutina.date_to}}</h3>
+        </ion-card-content>
+
         <div class="botones" slot="end">
-          <ion-button class="update" shape="round"  slot="end" [routerLink]="['../update', rutina.watering_id ]">
-            <ion-icon name="refresh-outline"></ion-icon>
-          </ion-button>
-  
-          <ion-button class="close" shape="round" slot="end" [routerLink]="['../delete', rutina.watering_id ]">
-            <ion-icon name="close-outline"></ion-icon>
+          <ion-button  [routerLink]="['../update', rutina.watering_id ]">
+            <ion-icon name="arrow-forward-circle-outline"></ion-icon>
           </ion-button>
         </div>          
-      </ion-item>
-      <br>
+
+      </ionic-card>
+      
+        
+
+      
     </div> 
 
 </ion-content>
