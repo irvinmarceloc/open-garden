@@ -58,12 +58,13 @@ export class DeletePage implements OnInit {
   Delete(id){
     this.apiService.delete(this.rutinas[0]['watering_id']).toPromise().then(resp =>{
       console.log("resp", resp);
+      this.navCtrl.back();
       this.mensaje = "Eliminado con exito";      
     }).catch(error =>{
       console.log("error ", error );
+      this.navCtrl.back();
       this.mensaje = "Fallo al eliminar";
     });
-    this.navCtrl.navigateForward("/tabs/tab1");
   }
 
   Back(): void{

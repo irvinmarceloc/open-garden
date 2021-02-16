@@ -7,6 +7,8 @@ import {
   Validators 
 } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -23,7 +25,8 @@ export class Tab2Page implements OnInit {
   }
   constructor(
     private formBuilder: FormBuilder,
-    private apiServie: ApiService
+    private apiService: ApiService,
+    private navCtrl: NavController
   ) {
     this.routineForm = this.formBuilder.group({
       date_from: new  FormControl(        
@@ -61,18 +64,20 @@ export class Tab2Page implements OnInit {
     routineData.time_from = this.CortarHora(routineData.time_from);
     routineData.date_to = this.CortarFecha(routineData.date_to);
     routineData.time_to = this.CortarHora(routineData.time_to);
-    this.apiServie.saveData(routineData).toPromise().then(resp =>{
+  
+    this.apiService.saveData(routineData).toPromise().then(resp =>{
       console.log("resp", resp);
+      this.navCtrl.back();
     }).catch(error =>{
       console.log("error ", error );
+      this.navCtrl.back();
     });
    console.log(routineData);
-   this.Clear();  
+   
+   
   }
 
-  Clear(){
-    this.routineForm.reset() ;
-  }
+  
 
   CortarFecha(input: String){
     let ouput = '';

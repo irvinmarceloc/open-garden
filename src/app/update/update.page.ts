@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Rutina } from '../models/Interface';
 import { ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { ScheduleSend } from '../models/Interface'
@@ -9,6 +8,7 @@ import {
   FormBuilder, 
   FormControl
 } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -28,7 +28,8 @@ export class UpdatePage implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private navCtrl: NavController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public alertController: AlertController
   ){    
 
   }
@@ -84,12 +85,46 @@ export class UpdatePage implements OnInit {
     
   }
 
-  Back(): void{
-    this.navCtrl.navigateForward("/tabs/tab1");
-  }
+  delete(){
+    this.apiService.delete(this.rutinas[0]['watering_id']).toPromise().then(resp =>{
+      console.log("resp", resp);
+      this.navCtrl.back();
+      this.mensaje = "Eliminado con exito";      
+    }).catch(error =>{
+      console.log("error ", error );
+      this.navCtrl.back();
+      this.mensaje = "Fallo al eliminar";
+    });
+  } 
 
   Clear(){
     this.routineForm.reset() ;
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: '',
+      header: '',
+      subHeader: 'Eliminar',
+      message: '¿Eliminar este registro?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            this.delete();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   CortarFecha(input: String){

@@ -23,6 +23,7 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule,
     RouterModule
   ],
+  exports: [Tab1Page],
   declarations: [Tab1Page]
 })
 export class Tab1PageModule {}

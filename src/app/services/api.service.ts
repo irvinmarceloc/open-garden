@@ -30,7 +30,7 @@ export class ApiService  {
   }
 
   getData(id: number){
-
+    
     return this.httpClient.get(this.API_URI+'/schedule/getSchedule/'+ id);
   }
 

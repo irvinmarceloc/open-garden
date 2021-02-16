@@ -47,7 +47,7 @@
       </ion-item>
 
       <div class="boton" text-center>
-        <ion-button [routerLink]="['../delete', rutina.watering_id ]" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        <ion-button (click)="presentAlert()" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button>
       </div>    
 
   </form>
