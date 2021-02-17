@@ -14,7 +14,6 @@ export class ApiService  {
   
   constructor(private httpClient: HttpClient, private storage: Storage) { 
       this.API_URI = localStorage.getItem('ip');
-      console.log(this.API_URI)
   }
 
   

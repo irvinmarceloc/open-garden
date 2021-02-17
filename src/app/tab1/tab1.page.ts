@@ -1,6 +1,7 @@
 import { Component,DoCheck, NgZone, OnChanges,OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Params} from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -15,12 +16,17 @@ export class Tab1Page  {
   constructor(
     private apiService: ApiService,    
     private route: ActivatedRoute,
+    private menuCtrl: MenuController
   ) {
     this.apiService.getDataPending().subscribe(arg => this.rutinas = arg);  
     
     this.route.paramMap.subscribe(arg => {
       this.apiService.getDataPending().subscribe( arg => this.rutinas = arg );
     });   
+  }
+
+  toggleMenu(){
+    this.menuCtrl.toggle();
   }
 
 }
