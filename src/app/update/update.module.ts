@@ -8,8 +8,6 @@ import { UpdatePageRoutingModule } from './update-routing.module';
 
 import { UpdatePage } from './update.page';
 
-import { ComponentsModule } from '../components/components.module';
-
 import { RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     IonicModule,
     UpdatePageRoutingModule,
-    ComponentsModule,
     RouterModule
   ],
   declarations: [UpdatePage]
