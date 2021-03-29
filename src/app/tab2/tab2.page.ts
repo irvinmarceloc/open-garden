@@ -73,8 +73,6 @@ export class Tab2Page implements OnInit {
       this.navCtrl.back();
     });
    console.log(routineData);
-   
-   
   }
 
   
@@ -92,6 +90,7 @@ export class Tab2Page implements OnInit {
     for (let i = 11; i < 16; i++) {
      ouput = ouput + input[i]
     }
+    ouput = ouput + ':00'
     return ouput;
   }    
   ngOnInit() {}
