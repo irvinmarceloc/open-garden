@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleSend } from '../models/Interface'
+import { LoadingController } from '@ionic/angular';
 import { 
   FormGroup, 
   FormBuilder, 
@@ -26,8 +27,10 @@ export class Tab2Page implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public loadingController: LoadingController
   ) {
+
     this.routineForm = this.formBuilder.group({
       date_from: new  FormControl(        
       "",
@@ -67,16 +70,16 @@ export class Tab2Page implements OnInit {
   
     this.apiService.saveData(routineData).toPromise().then(resp =>{
       console.log("resp", resp);
+      this.presentLoading();
       this.navCtrl.back();
     }).catch(error =>{
       console.log("error ", error );
-      this.navCtrl.back();
+      this.presentLoading();
+      this.navCtrl.navigateForward('/tabs/tab1')
     });
    console.log(routineData);
   }
-
   
-
   CortarFecha(input: String){
     let ouput = '';
     for (let i = 0; i < 10; i++) {
@@ -90,8 +93,20 @@ export class Tab2Page implements OnInit {
     for (let i = 11; i < 16; i++) {
      ouput = ouput + input[i]
     }
-    ouput = ouput + ':00'
     return ouput;
   }    
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Guardando por favor espere',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
   ngOnInit() {}
 }

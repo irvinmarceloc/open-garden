@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from "@ionic/storage";
 import { ApiService } from '../services/api.service';
+import { LoadingController } from '@ionic/angular';
 import { 
   FormGroup, 
   FormBuilder, 
@@ -41,7 +42,8 @@ export class LoginPage implements OnInit {
     private authService: AuthenticateServiceService,
     private navCtrl: NavController,
     private storage: Storage,
-    private apiService: ApiService
+    private apiService: ApiService, 
+    public loadingController: LoadingController
   ) { 
     this.loginForm = this.formBuilder.group({
       ip : new FormControl(
@@ -89,5 +91,18 @@ export class LoginPage implements OnInit {
   goToRegister(){
     this.navCtrl.navigateForward("/register");
   }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Verificando',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
 }
 
