@@ -80,6 +80,7 @@ export class LoginPage implements OnInit {
     .then(res => {
       this.errorMessage = "";
       this.storage.set("isUserLoggedIn", true);
+      this.presentLoading();
       this.navCtrl.navigateForward("/tabs/tab1");
     })
     .catch(err =>{
@@ -95,7 +96,7 @@ export class LoginPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Verificando',
+      message: 'Cargando',
       duration: 2000
     });
     await loading.present();
