@@ -16,33 +16,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-item>Pendientes</ion-item>
+  <div *ngFor="let rutina of rutinas" >
+    <ion-card class="card-background-page">
+      <ion-card-content (click)="goTo(rutina.watering_id)">
+        <ion-card-subtitle>ID:  {{rutina.watering_id}}</ion-card-subtitle>
+        <ion-card-subtitle>Zona:  {{rutina.zone_id}}</ion-card-subtitle>      
+        <p class="titulo">Inicio: </p><br><h3>{{rutina.date_from}}</h3>
+        <p class="titulo">Fin:    </p><br><h3>{{rutina.date_to}}</h3>
+      </ion-card-content>    
+    </ion-card>
+  </div> 
 
-    <ion-item>Pendientes</ion-item>
-    <div *ngFor="let rutina of rutinas" >
-      
-      
-      
 
-        <ion-card class="card-background-page">
-          <ion-card-content >
-          
-            
-              <ion-card-subtitle>ID:  {{rutina.watering_id}}</ion-card-subtitle>
-              <ion-card-subtitle>Zona:  {{rutina.zone_id}}</ion-card-subtitle>      
-              <p class="titulo">Inicio: </p><br><h3>{{rutina.date_from}}</h3>
-              <p class="titulo">Fin:    </p><br><h3>{{rutina.date_to}}</h3>
-            
-            
-              <ion-button  [routerLink]="['../update', rutina.watering_id ]">
-                <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-              </ion-button>              
-            
-          
-          </ion-card-content>
-          
-        </ion-card>
-      
-      
-    </div> 
 
 </ion-content>

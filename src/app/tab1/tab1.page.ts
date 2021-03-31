@@ -2,6 +2,8 @@ import { Component,DoCheck, NgZone, OnChanges,OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Params} from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { ViewChild } from '@angular/core';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class Tab1Page  {
   constructor(
     private apiService: ApiService,    
     private route: ActivatedRoute,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private navCtrl: NavController
   ) {
     this.apiService.getDataPending().subscribe(arg => this.rutinas = arg);  
     
@@ -29,4 +32,10 @@ export class Tab1Page  {
     this.menuCtrl.toggle();
   }
 
+  goTo(id){
+    this.navCtrl.navigateForward('/tabs/tab1/update/'+id)
+  } 
+  saved(){
+    this.navCtrl.navigateForward('/tabs/tab2')
+  }
 }
