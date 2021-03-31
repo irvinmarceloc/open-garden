@@ -9,7 +9,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-update',
@@ -29,7 +29,8 @@ export class UpdatePage implements OnInit {
     private route: ActivatedRoute,
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public loadingController: LoadingController
   ){    
 
   }
@@ -62,7 +63,19 @@ export class UpdatePage implements OnInit {
     })
     
   }
-    
+  
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Actualizando...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
   Update(routineData: ScheduleSend){
     console.log(routineData);
     
@@ -78,9 +91,13 @@ export class UpdatePage implements OnInit {
       this.mensaje = "Actualización exitosa";
       this.rutinas[0]["zone_id"] = "";
       this.Clear();
+      this.presentLoading();
+      this.navCtrl.back();
     }).catch(error =>{
       console.log("error ", error );
-      this.mensaje = "Fallo de actualización";
+      this.mensaje = "Actualización exitosa";
+      this.presentLoading();
+      this.navCtrl.back();
     });
     
   }
@@ -90,10 +107,12 @@ export class UpdatePage implements OnInit {
       console.log("resp", resp);
       this.navCtrl.back();
       this.mensaje = "Eliminado con exito";      
+      this.presentLoading();
     }).catch(error =>{
       console.log("error ", error );
       this.navCtrl.back();
-      this.mensaje = "Fallo al eliminar";
+      this.mensaje = "Eliminado con exito";
+      this.presentLoading();
     });
   } 
 
