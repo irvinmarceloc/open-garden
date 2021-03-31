@@ -95,7 +95,9 @@ export class Tab2Page implements OnInit {
     }
     return ouput;
   }    
-
+  back(){
+    this.navCtrl.navigateForward('/tabs/tab1')
+  }
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
