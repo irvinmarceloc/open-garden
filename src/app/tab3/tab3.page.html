@@ -9,11 +9,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>Pendientes</ion-item>
   <div *ngFor="let rutina of rutinas" >
     <ion-card class="card-background-page">
       <ion-card-content >
-        <ion-card-subtitle>ID:  {{rutina.watering_id}}</ion-card-subtitle>
         <ion-card-subtitle>Zona:  {{rutina.zone_id}}</ion-card-subtitle>      
         <p class="titulo">Inicio: </p><br><h3>{{rutina.date_from}}</h3>
         <p class="titulo">Fin:    </p><br><h3>{{rutina.date_to}}</h3>
